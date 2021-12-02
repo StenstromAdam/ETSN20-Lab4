@@ -9,11 +9,19 @@ public class SearchWord {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
+			if(args[0] != "Search" ) {
+				System.out.println("First Argument Needs to be Search");
+				System.exit(0);
+			}
 			wordToSearch = args[1].toLowerCase();
-			fileToRead = new File(args[2]);	// Loads the file as argument 3, as specified.
+			fileToRead = new File(args[2]);
+			if(!fileToRead.exists()) {
+				System.out.println("The wanted file does not exist, or the path is invalid.");
+				System.exit(0);
+			}
 		} catch(Exception e) {
 			System.out.println("Wrong Input Arguments, should be: Search <Pattern> <file>");
-			System.exit(0);	// Exits the program
+			System.exit(0);
 		}
 		Scanner sc = new Scanner(fileToRead);
 		while(sc.hasNextLine()) {
@@ -21,7 +29,8 @@ public class SearchWord {
 			if(lineWork.toLowerCase().contains(wordToSearch)) {
 				System.out.println(lineWork);
 			}
-		}
+		}	
+		sc.close();
 	}
 }
 
