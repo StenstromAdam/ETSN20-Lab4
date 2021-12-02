@@ -10,10 +10,10 @@ public class SearchWord {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			wordToSearch = args[1].toLowerCase();
-			fileToRead = new File(args[2]);
+			fileToRead = new File(args[2]);	// Loads the file as argument 3, as specified.
 		} catch(Exception e) {
 			System.out.println("Wrong Input Arguments, should be: Search <Pattern> <file>");
-			System.exit(0);
+			System.exit(0);	// Exits the program
 		}
 		Scanner sc = new Scanner(fileToRead);
 		while(sc.hasNextLine()) {
